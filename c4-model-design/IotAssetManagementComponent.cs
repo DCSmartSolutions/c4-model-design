@@ -11,15 +11,9 @@ namespace c4_model_design
         private readonly ContainerDiagram containerDiagram;
         private readonly ContextDiagram contextDiagram;
         private readonly string componentTag = "Component";
-        public Component LocalizationWristbandController { get; set; }
-        public Component IotAssetTrackingApplicationService { get; set; }
-        public Component LocalizationWristbandRepository { get; set; }
+
         public Component TrackingDomainLayer { get; set; }
 
-        public Component ScaleController { get; set; }
-        public Component ScaleRepository { get; set; }
-        public Component ScaleDomainLayer { get; set; }
-        public Component IotAssetScaleApplicationService { get; set; }
 
         public Component WeatherSensorController { get; set; }
         public Component WeatherSensorRepository { get; set; }
@@ -41,16 +35,6 @@ namespace c4_model_design
         }
         private void AddComponents()
         {
-            LocalizationWristbandController = containerDiagram.ApiRest.AddComponent("Localization Wristband Controller", "", "Java");
-            IotAssetTrackingApplicationService = containerDiagram.ApiRest.AddComponent("Iot Asset Tracking Application Service", "", "Java");
-            LocalizationWristbandRepository = containerDiagram.ApiRest.AddComponent("Localization Wristband Repository", "", "Java");
-            TrackingDomainLayer = containerDiagram.ApiRest.AddComponent("Tracking Domain Layer", "", "Java");
-
-            ScaleController = containerDiagram.ApiRest.AddComponent("Scale Controller", "", "Java");
-            ScaleRepository = containerDiagram.ApiRest.AddComponent("Scale Repository", "", "Java");
-            ScaleDomainLayer = containerDiagram.ApiRest.AddComponent("Scale Domain Layer", "", "Java");
-            IotAssetScaleApplicationService = containerDiagram.ApiRest.AddComponent("Iot Asset Scale Application Service", "", "Java");
-
             WeatherSensorController = containerDiagram.ApiRest.AddComponent("Weather Sensor Controller", "", "Java");
             WeatherSensorRepository = containerDiagram.ApiRest.AddComponent("Weather Sensor Repository", "", "Java");
             WeatherSensorDomainLayer = containerDiagram.ApiRest.AddComponent("Weather Domain Layer", "", "Java");
@@ -58,19 +42,8 @@ namespace c4_model_design
         }
         private void AddRelationships()
         {
-            containerDiagram.IoTdevices.Uses(LocalizationWristbandController, "Makes API calls to");
-            containerDiagram.IoTdevices.Uses(ScaleController, "Makes API calls to");
             containerDiagram.IoTdevices.Uses(WeatherSensorController, "Makes API calls to");
 
-            LocalizationWristbandController.Uses(IotAssetTrackingApplicationService, "[uses]", "");
-            IotAssetTrackingApplicationService.Uses(LocalizationWristbandRepository, "[uses]", "");
-            IotAssetTrackingApplicationService.Uses(TrackingDomainLayer, "[uses     ]", "");
-            LocalizationWristbandRepository.Uses(containerDiagram.Database, "[uses]", "");
-
-            ScaleController.Uses(IotAssetScaleApplicationService, "[uses]", "");
-            IotAssetScaleApplicationService.Uses(ScaleRepository, "[uses]", "");
-            IotAssetScaleApplicationService.Uses(ScaleDomainLayer, "[uses]", "");
-            ScaleRepository.Uses(containerDiagram.Database, "[uses]", "");
 
             WeatherSensorController.Uses(IotAssetWeatherSensorApplicationService, "[uses]", "");
             IotAssetWeatherSensorApplicationService.Uses(WeatherSensorRepository, "[uses]", "");
@@ -79,14 +52,6 @@ namespace c4_model_design
         }
         private void ApplyStyles()
         {
-            LocalizationWristbandController.AddTags(this.componentTag);
-            IotAssetTrackingApplicationService.AddTags(this.componentTag);
-            LocalizationWristbandRepository.AddTags(this.componentTag);
-            TrackingDomainLayer.AddTags(this.componentTag);
-            ScaleController.AddTags(this.componentTag);
-            ScaleRepository.AddTags(this.componentTag);
-            ScaleDomainLayer.AddTags(this.componentTag);
-            IotAssetScaleApplicationService.AddTags(this.componentTag);
             WeatherSensorController.AddTags(this.componentTag);
             WeatherSensorRepository.AddTags(this.componentTag);
             WeatherSensorDomainLayer.AddTags(this.componentTag);
@@ -99,14 +64,7 @@ namespace c4_model_design
             componentView.Title = title;
             componentView.Add(containerDiagram.IoTdevices);
             componentView.Add(containerDiagram.Database);
-            componentView.Add(LocalizationWristbandController);
-            componentView.Add(IotAssetTrackingApplicationService);
-            componentView.Add(LocalizationWristbandRepository);
             componentView.Add(TrackingDomainLayer);
-            componentView.Add(ScaleController);
-            componentView.Add(ScaleRepository);
-            componentView.Add(ScaleDomainLayer);
-            componentView.Add(IotAssetScaleApplicationService);
             componentView.Add(WeatherSensorController);
             componentView.Add(WeatherSensorRepository);
             componentView.Add(WeatherSensorDomainLayer);
