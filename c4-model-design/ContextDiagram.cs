@@ -9,6 +9,7 @@ namespace c4_model_design
 		public SoftwareSystem GoogleMaps { get; private set; }
 		public SoftwareSystem FirebaseAuthentication { get; private set; }
 		public SoftwareSystem PaymentGateway { get; private set; }
+		public SoftwareSystem MosquittoBroker { get; private set; }
 		public Person Turista { get; private set; }
 		public Person Agencia { get; private set; }
 
@@ -39,6 +40,7 @@ namespace c4_model_design
 		{
 			LifeTravelSystem = c4.Model.AddSoftwareSystem("Tourist package management system for agencies with Iot devices", "Allows tracking and monitoring of tour packages sold by agencies and purchased by tourists. Allows the geolocation of tourists during tours, real-time weather monitoring of tour locations and reallocation of transportation.");
 			GoogleMaps = c4.Model.AddSoftwareSystem("Google Maps", "Platform that offers a REST API for geo-referenced information.");
+			MosquittoBroker = c4.Model.AddSoftwareSystem("Mosquitto Broker", "Broker for IoT devices who send temperatures for departmens");
 			FirebaseAuthentication = c4.Model.AddSoftwareSystem("Firebase Authentication System", "System that provides backend services, easy-to-use SDKs, and ready-made UI libraries to authenticate users to your app");
             PaymentGateway = c4.Model.AddSoftwareSystem("Payment Gateway API", "API operates to integrate a payment solution with another existing application, and connect a LifeTravel's checkout function to the payment system");
 		}
@@ -49,6 +51,7 @@ namespace c4_model_design
 
 			LifeTravelSystem.Uses(FirebaseAuthentication, "Use system for user authentication");
 			LifeTravelSystem.Uses(GoogleMaps, "Use Google maps API");
+			LifeTravelSystem.Uses(MosquittoBroker, "Use Mosquitto broker");
 			LifeTravelSystem.Uses(PaymentGateway, "Use Payment Gateway API");
 		}
 
@@ -69,6 +72,7 @@ namespace c4_model_design
 
 			styles.Add(new ElementStyle(nameof(LifeTravelSystem)) { Background = "#008f39", Color = "#ffffff", Shape = Shape.RoundedBox, FontSize=20 });
 			styles.Add(new ElementStyle(nameof(GoogleMaps)) { Background = "#90714c", Color = "#ffffff", Shape = Shape.RoundedBox });
+			styles.Add(new ElementStyle(nameof(MosquittoBroker)) { Background = "#90714c", Color = "#ffffff", Shape = Shape.RoundedBox });
 			styles.Add(new ElementStyle(nameof(FirebaseAuthentication)) { Background = "#90714c", Color = "#ffffff", Shape = Shape.RoundedBox });
 			styles.Add(new ElementStyle(nameof(PaymentGateway)) { Background = "#90714c", Color = "#ffffff", Shape = Shape.RoundedBox });
 		}
@@ -80,6 +84,7 @@ namespace c4_model_design
 
 			LifeTravelSystem.AddTags(nameof(LifeTravelSystem));
 			GoogleMaps.AddTags(nameof(GoogleMaps));
+			MosquittoBroker.AddTags(nameof(MosquittoBroker));
 			FirebaseAuthentication.AddTags(nameof(FirebaseAuthentication));
 			PaymentGateway.AddTags(nameof(PaymentGateway));
 		}
