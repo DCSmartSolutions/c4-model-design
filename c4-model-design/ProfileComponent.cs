@@ -40,11 +40,10 @@ namespace c4_model_design
         private void AddRelationships()
         {
             containerDiagram.WebApplication.Uses(UserProfileController, "Makes API calls to");
-            containerDiagram.MobileApplication.Uses(UserProfileController, "Makes API calls to");
-            UserProfileController.Uses(UserProfileApplicationService, "[JDBC]", "");
-            UserProfileApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[JDBC]", "");
-            UserProfileApplicationService.Uses(UserProfileRepository, "[JDBC]", "");
-            UserProfileApplicationService.Uses(DomainLayer, "[JDBC]", "");
+            UserProfileController.Uses(UserProfileApplicationService, "[uses]", "");
+            UserProfileApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[uses]", "");
+            UserProfileApplicationService.Uses(UserProfileRepository, "[uses]", "");
+            UserProfileApplicationService.Uses(DomainLayer, "[uses]", "");
             UserProfileRepository.Uses(containerDiagram.Database, "Use", "");
         }
         private void ApplyStyles()
@@ -60,7 +59,6 @@ namespace c4_model_design
             ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.ApiRest, title, title);
             componentView.Title = title;
             componentView.Add(containerDiagram.WebApplication);
-            componentView.Add(containerDiagram.MobileApplication);
             componentView.Add(containerDiagram.Database);
             componentView.Add(identityAccessComponentDiagram.UserRepository);
             componentView.Add(UserProfileController);

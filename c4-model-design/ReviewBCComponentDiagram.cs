@@ -41,11 +41,10 @@ namespace c4_model_design
         private void AddRelationships()
         {
             containerDiagram.WebApplication.Uses(ReviewController, "Makes API calls to");
-            containerDiagram.MobileApplication.Uses(ReviewController, "Makes API calls to");
-            ReviewController.Uses(ReviewApplicationService, "[JDBC]", "");
-            ReviewApplicationService.Uses(ReviewRepository, "[JDBC]", "");
-            ReviewApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[JDBC]", "");
-            ReviewApplicationService.Uses(DomainLayer, "[JDBC]", "");
+            ReviewController.Uses(ReviewApplicationService, "[uses]", "");
+            ReviewApplicationService.Uses(ReviewRepository, "[uses]", "");
+            ReviewApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[uses]", "");
+            ReviewApplicationService.Uses(DomainLayer, "[uses]", "");
             ReviewRepository.Uses(containerDiagram.Database, "Use", "");
         }
         private void ApplyStyles()
@@ -62,7 +61,6 @@ namespace c4_model_design
             componentView.Title = title;
             componentView.Add(containerDiagram.WebApplication);
             componentView.Add(containerDiagram.Database);
-            componentView.Add(containerDiagram.MobileApplication);
             componentView.Add(identityAccessComponentDiagram.UserRepository);
             componentView.Add(this.ReviewController);
             componentView.Add(this.ReviewApplicationService);

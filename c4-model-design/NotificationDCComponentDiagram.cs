@@ -41,11 +41,10 @@ namespace c4_model_design
         private void AddRelationships()
         {
             containerDiagram.WebApplication.Uses(NotificationController, "Makes API calls to");
-            containerDiagram.MobileApplication.Uses(NotificationController, "Makes API calls to");
-            NotificationController.Uses(NotificationApplicationService, "[JDBC]", "");
-            NotificationApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[JDBC]", "");
-            NotificationApplicationService.Uses(NotificationRepository, "[JDBC]", "");
-            NotificationApplicationService.Uses(DomainLayer, "[JDBC]", "");
+            NotificationController.Uses(NotificationApplicationService, "[uses]", "");
+            NotificationApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[uses]", "");
+            NotificationApplicationService.Uses(NotificationRepository, "[uses]", "");
+            NotificationApplicationService.Uses(DomainLayer, "[uses]", ""); 
             NotificationRepository.Uses(containerDiagram.Database, "Use", "");
         }
         private void ApplyStyles()
@@ -62,7 +61,6 @@ namespace c4_model_design
             componentView.Title = title;
             componentView.Add(containerDiagram.WebApplication);
             componentView.Add(containerDiagram.Database);
-            componentView.Add(containerDiagram.MobileApplication);
             componentView.Add(this.NotificationController);
             componentView.Add(this.NotificationApplicationService);
             componentView.Add(this.NotificationRepository);

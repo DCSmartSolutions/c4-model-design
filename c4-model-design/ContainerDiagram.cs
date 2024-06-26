@@ -29,7 +29,6 @@ namespace c4_model_design
 
         private void AddContainers()
         {
-            MobileApplication = contextDiagram.LifeTravelSystem.AddContainer("Mobile App", "Allows tourists to visualize a dashboard with a summary of all the information of their purchased tour packages.", "Kotlin");
             WebApplication = contextDiagram.LifeTravelSystem.AddContainer("Web App", "Allows tourists to purchase package tours and public agencies to purchase package tours.", "Angular");
             IoTdevices = contextDiagram.LifeTravelSystem.AddContainer(" IoT Embedded application", "", "Arduino");
             LandingPage = contextDiagram.LifeTravelSystem.AddContainer("Landing Page", "", "HTML/CSS/JS");
@@ -39,15 +38,12 @@ namespace c4_model_design
 
         private void AddRelationships()
         {
-            contextDiagram.Turista.Uses(MobileApplication, "Consult");
             contextDiagram.Turista.Uses(WebApplication, "Consult");
             contextDiagram.Turista.Uses(LandingPage, "Consult");
 
-            contextDiagram.Agencia.Uses(MobileApplication, "Consult");
             contextDiagram.Agencia.Uses(WebApplication, "Consult");
             contextDiagram.Agencia.Uses(LandingPage, "Consult");
 
-            MobileApplication.Uses(ApiRest, "API Request", "JSON/HTTPS");
             IoTdevices.Uses(ApiRest, "API Request", "JSON/HTTPS");
             WebApplication.Uses(ApiRest, "API Request", "JSON/HTTPS");
 
@@ -62,7 +58,6 @@ namespace c4_model_design
         {
             SetTags();
             Styles styles = c4.ViewSet.Configuration.Styles;
-            styles.Add(new ElementStyle(nameof(MobileApplication)) { Background = "#9d33d6", Color = "#ffffff", Shape = Shape.MobileDevicePortrait, Icon = "" });
             styles.Add(new ElementStyle(nameof(WebApplication)) { Background = "#9d33d6", Color = "#ffffff", Shape = Shape.WebBrowser, Icon = "" });
             styles.Add(new ElementStyle(nameof(IoTdevices)) { Background = "#b8c979", Color = "#000000", Shape = Shape.WebBrowser, Icon = "" });
             styles.Add(new ElementStyle(nameof(LandingPage)) { Background = "#929000", Color = "#ffffff", Shape = Shape.WebBrowser, Icon = "" });
@@ -72,7 +67,6 @@ namespace c4_model_design
 
         private void SetTags()
         {
-            MobileApplication.AddTags(nameof(MobileApplication));
             WebApplication.AddTags(nameof(WebApplication));
             LandingPage.AddTags(nameof(LandingPage));
             ApiRest.AddTags(nameof(ApiRest));

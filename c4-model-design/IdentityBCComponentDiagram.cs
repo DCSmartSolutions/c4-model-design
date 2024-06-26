@@ -44,17 +44,15 @@ namespace c4_model_design
         private void AddRelationships()
         {
             containerDiagram.WebApplication.Uses(SignInController, "Makes API calls to");
-            containerDiagram.MobileApplication.Uses(SignInController, "Makes API calls to");
             containerDiagram.WebApplication.Uses(SignUpController, "Makes API calls to");
-            containerDiagram.MobileApplication.Uses(SignUpController, "Makes API calls to");
-            SignInController.Uses(FirebaseAdapter, "[JDBC]", "");
-            SignUpController.Uses(FirebaseAdapter, "[JDBC]", "");
-            SignInController.Uses(SignInApplicationService, "[JDBC]", "");
-            SignInApplicationService.Uses(UserRepository, "[JDBC]", "");
-            SignInApplicationService.Uses(IdentityDomainLayer, "[JDBC]", "");
-            SignUpController.Uses(SignUpApplicationService, "[JDBC]", "");
-            SignUpApplicationService.Uses(UserRepository, "[JDBC]", "");
-            SignUpApplicationService.Uses(IdentityDomainLayer, "[JDBC]", "");
+            SignInController.Uses(FirebaseAdapter, "[uses]", "");
+            SignUpController.Uses(FirebaseAdapter, "[uses]", "");
+            SignInController.Uses(SignInApplicationService, "[uses]", "");
+            SignInApplicationService.Uses(UserRepository, "[uses]", "");
+            SignInApplicationService.Uses(IdentityDomainLayer, "[uses]", "");
+            SignUpController.Uses(SignUpApplicationService, "[uses]", "");
+            SignUpApplicationService.Uses(UserRepository, "[uses]", "");
+            SignUpApplicationService.Uses(IdentityDomainLayer, "[uses]", "");
             UserRepository.Uses(containerDiagram.Database, "Use", "");
             FirebaseAdapter.Uses(contextDiagram.FirebaseAuthentication, "Use", "");
         }
@@ -77,7 +75,6 @@ namespace c4_model_design
             componentView.Title = title;
             componentView.Add(containerDiagram.WebApplication);
             componentView.Add(containerDiagram.Database);
-            componentView.Add(containerDiagram.MobileApplication);
             componentView.Add(this.SignInController);
             componentView.Add(this.SignInApplicationService);
             componentView.Add(this.SignUpController);

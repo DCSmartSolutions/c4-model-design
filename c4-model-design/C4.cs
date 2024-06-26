@@ -5,9 +5,9 @@ namespace c4_model_design
 {
 	public class C4
 	{
-		private readonly long workspaceId = 92638;
-		private readonly string apiKey = "68beb795-479e-48ec-953a-3c70a3b902b2";
-		private readonly string apiSecret = "4bcebfb2-f633-4351-9ae2-cba721815d58";
+		private readonly long workspaceId = 93326;
+		private readonly string apiKey = "7091c0b4-8311-4fb0-afa4-9a167fe7414d";
+		private readonly string apiSecret = "023907c5-efb8-45e9-9e52-ea283ad77ba3";
 
 		public StructurizrClient StructurizrClient { get; }
 		public Workspace Workspace { get; }

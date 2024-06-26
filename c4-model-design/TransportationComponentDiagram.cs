@@ -42,10 +42,10 @@ namespace c4_model_design
         private void AddRelationships()
         {
             containerDiagram.WebApplication.Uses(AutomobileController, "Makes API calls to");
-            AutomobileController.Uses(AutomobileApplicationService, "[JDBC]", "");
-            AutomobileApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[JDBC]", "");
-            AutomobileApplicationService.Uses(AutomobileRepository, "[JDBC]", "");
-            AutomobileApplicationService.Uses(AutomobileDomainLayer, "[JDBC]", "");
+            AutomobileController.Uses(AutomobileApplicationService, "[uses]", "");
+            AutomobileApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[uses]", "");
+            AutomobileApplicationService.Uses(AutomobileRepository, "[uses]", "");
+            AutomobileApplicationService.Uses(AutomobileDomainLayer, "[uses]", "");
             AutomobileRepository.Uses(containerDiagram.Database, "Use", "");
         }
         private void ApplyStyles()

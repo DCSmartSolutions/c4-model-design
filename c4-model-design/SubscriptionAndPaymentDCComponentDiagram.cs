@@ -48,14 +48,14 @@ namespace c4_model_design
         {
             containerDiagram.WebApplication.Uses(PaymentController, "Makes API calls to");
             containerDiagram.WebApplication.Uses(SubscriptionController, "Makes API calls to");
-            PaymentController.Uses(PaymentApplicationService, "[JDBC]", "");
-            SubscriptionController.Uses(SubscriptionApplicationService, "[JDBC]", "");
+            PaymentController.Uses(PaymentApplicationService, "[uses]", "");
+            SubscriptionController.Uses(SubscriptionApplicationService, "[uses]", "");
             PaymentController.Uses(PaymentGatewayFacade, "uSE", "");
             PaymentGatewayFacade.Uses(contextDiagram.PaymentGateway, "JSON/HTTPS");
-            PaymentApplicationService.Uses(PaymentRepository, "[JDBC]", "");
-            SubscriptionApplicationService.Uses(SubscriptionRepository, "[JDBC]", "");
-            PaymentApplicationService.Uses(DomainLayer, "[JDBC]", "");
-            SubscriptionApplicationService.Uses(DomainLayer, "[JDBC]", "");
+            PaymentApplicationService.Uses(PaymentRepository, "[uses]", "");
+            SubscriptionApplicationService.Uses(SubscriptionRepository, "[uses]", "");
+            PaymentApplicationService.Uses(DomainLayer, "[uses]", "");
+            SubscriptionApplicationService.Uses(DomainLayer, "[uses]", "");
             PaymentRepository.Uses(containerDiagram.Database, "Use", "");
             SubscriptionRepository.Uses(containerDiagram.Database, "Use", "");
         }

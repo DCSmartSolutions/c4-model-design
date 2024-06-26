@@ -40,11 +40,10 @@ namespace c4_model_design
         private void AddRelationships()
         {
             containerDiagram.WebApplication.Uses(TourPackageController, "Makes API calls to");
-            containerDiagram.MobileApplication.Uses(TourPackageController, "Makes API calls to");
-            TourPackageController.Uses(TourPackageApplicationService, "[JDBC]", "");
-            TourPackageApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[JDBC]", "");
-            TourPackageApplicationService.Uses(TourPackageRepository, "[JDBC]", "");
-            TourPackageApplicationService.Uses(TourPackageDomainLayer, "[JDBC]", "");
+            TourPackageController.Uses(TourPackageApplicationService, "[uses]", "");
+            TourPackageApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[uses]", "");
+            TourPackageApplicationService.Uses(TourPackageRepository, "[uses]", "");
+            TourPackageApplicationService.Uses(TourPackageDomainLayer, "[uses]", "");   
             TourPackageRepository.Uses(containerDiagram.Database, "Use", "");
         }
         private void ApplyStyles()
@@ -61,7 +60,6 @@ namespace c4_model_design
             componentView.Title = title;
             componentView.Add(containerDiagram.WebApplication);
             componentView.Add(containerDiagram.Database);
-            componentView.Add(containerDiagram.MobileApplication);
             componentView.Add(identityAccessComponentDiagram.UserRepository);
             componentView.Add(this.TourPackageController);
             componentView.Add(this.TourPackageApplicationService);

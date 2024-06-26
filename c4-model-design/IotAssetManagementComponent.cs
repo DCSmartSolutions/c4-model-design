@@ -62,20 +62,20 @@ namespace c4_model_design
             containerDiagram.IoTdevices.Uses(ScaleController, "Makes API calls to");
             containerDiagram.IoTdevices.Uses(WeatherSensorController, "Makes API calls to");
 
-            LocalizationWristbandController.Uses(IotAssetTrackingApplicationService, "[JDBC]", "");
-            IotAssetTrackingApplicationService.Uses(LocalizationWristbandRepository, "[JDBC]", "");
-            IotAssetTrackingApplicationService.Uses(TrackingDomainLayer, "[JDBC]", "");
-            LocalizationWristbandRepository.Uses(containerDiagram.Database, "[JDBC]", "");
+            LocalizationWristbandController.Uses(IotAssetTrackingApplicationService, "[uses]", "");
+            IotAssetTrackingApplicationService.Uses(LocalizationWristbandRepository, "[uses]", "");
+            IotAssetTrackingApplicationService.Uses(TrackingDomainLayer, "[uses     ]", "");
+            LocalizationWristbandRepository.Uses(containerDiagram.Database, "[uses]", "");
 
-            ScaleController.Uses(IotAssetScaleApplicationService, "[JDBC]", "");
-            IotAssetScaleApplicationService.Uses(ScaleRepository, "[JDBC]", "");
-            IotAssetScaleApplicationService.Uses(ScaleDomainLayer, "[JDBC]", "");
-            ScaleRepository.Uses(containerDiagram.Database, "[JDBC]", "");
+            ScaleController.Uses(IotAssetScaleApplicationService, "[uses]", "");
+            IotAssetScaleApplicationService.Uses(ScaleRepository, "[uses]", "");
+            IotAssetScaleApplicationService.Uses(ScaleDomainLayer, "[uses]", "");
+            ScaleRepository.Uses(containerDiagram.Database, "[uses]", "");
 
-            WeatherSensorController.Uses(IotAssetWeatherSensorApplicationService, "[JDBC]", "");
-            IotAssetWeatherSensorApplicationService.Uses(WeatherSensorRepository, "[JDBC]", "");
-            IotAssetWeatherSensorApplicationService.Uses(WeatherSensorDomainLayer, "[JDBC]", "");
-            WeatherSensorRepository.Uses(containerDiagram.Database, "[JDBC]", "");
+            WeatherSensorController.Uses(IotAssetWeatherSensorApplicationService, "[uses]", "");
+            IotAssetWeatherSensorApplicationService.Uses(WeatherSensorRepository, "[uses]", "");
+            IotAssetWeatherSensorApplicationService.Uses(WeatherSensorDomainLayer, "[uses]", "");
+            WeatherSensorRepository.Uses(containerDiagram.Database, "[uses]", "");
         }
         private void ApplyStyles()
         {

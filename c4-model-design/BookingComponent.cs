@@ -46,14 +46,13 @@ namespace c4_model_design
         private void AddRelationships()
         {
             containerDiagram.WebApplication.Uses(BookingController, "Makes API calls to");
-            containerDiagram.MobileApplication.Uses(BookingController, "Makes API calls to");
-            BookingController.Uses(BookingApplicationService, "[JDBC]", "");
-            BookingApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[JDBC]", "");
-            BookingApplicationService.Uses(tourExperienceBCComponentDiagram.TourPackageRepository, "[JDBC]", "");
-            BookingApplicationService.Uses(transportationComponentDiagram.AutomobileRepository, "[JDBC]", "");
-            BookingApplicationService.Uses(notificationDCComponentDiagram.NotificationRepository, "[JDBC]", "");
-            BookingApplicationService.Uses(BookingRepository, "[JDBC]", "");
-            BookingApplicationService.Uses(DomainLayer, "[JDBC]", "");
+            BookingController.Uses(BookingApplicationService, "[uses]", "");
+            BookingApplicationService.Uses(identityAccessComponentDiagram.UserRepository, "[uses]", "");
+            BookingApplicationService.Uses(tourExperienceBCComponentDiagram.TourPackageRepository, "[uses]", "");
+            BookingApplicationService.Uses(transportationComponentDiagram.AutomobileRepository, "[uses]", "");
+            BookingApplicationService.Uses(notificationDCComponentDiagram.NotificationRepository, "[uses]", "");
+            BookingApplicationService.Uses(BookingRepository, "[uses]", "");
+            BookingApplicationService.Uses(DomainLayer, "[uses]", "");
             BookingRepository.Uses(containerDiagram.Database, "Use", "");
         }
         private void ApplyStyles()
@@ -69,7 +68,6 @@ namespace c4_model_design
             ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.ApiRest, title, title);
             componentView.Title = title;
             componentView.Add(containerDiagram.WebApplication);
-            componentView.Add(containerDiagram.MobileApplication);
             componentView.Add(containerDiagram.Database);
             componentView.Add(BookingController);
             componentView.Add(BookingApplicationService);
